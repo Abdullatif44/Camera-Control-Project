@@ -1,71 +1,54 @@
-import cv2
-import mediapipe as mp
-import pyautogui
-import speech_recognition as sr
-import tkinter as tk
-from tkinter import messagebox
-from camera import CameraHandler
-from gestures import GestureRecognition
-from voice import VoiceControl
-from auth import FaceAuthentication
-import threading
+from __future__ import annotations
 
-class PCControlApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("PC Control Using Camera")
-        self.root.geometry("500x300")
+import argparse
+import signal
+import sys
+import time
 
-        # UI Components
-        self.label = tk.Label(self.root, text="PC Control Using Camera", font=("Arial", 20))
-        self.label.pack(pady=20)
-
-        self.start_button = tk.Button(self.root, text="Start Control", command=self.start_control)
-        self.start_button.pack(pady=10)
-
-        self.quit_button = tk.Button(self.root, text="Quit", command=self.quit_app)
-        self.quit_button.pack(pady=10)
-
-        # Camera, Gestures, Voice, and Authentication
-        self.camera = CameraHandler()
-        self.gesture_recognition = GestureRecognition()
-        self.voice_control = VoiceControl()
-        self.face_auth = FaceAuthentication()
-
-    def start_control(self):
-        def run_after_auth():
-            authenticated = self.face_auth.authenticate_user()
-            if not authenticated:
-                self.root.after(0, lambda: messagebox.showerror("Authentication", "Face not recognized! Access denied."))
-                return
-            self.root.after(0, self.run_control)
-
-            # Start voice listener in background
-            threading.Thread(target=self.voice_control.listen_for_commands, daemon=True).start()
-
-        threading.Thread(target=run_after_auth, daemon=True).start()
-
-    def run_control(self):
-        while True:
-            frame = self.camera.get_frame()
-            if frame is None:
-                break
-
-            frame = self.gesture_recognition.detect_gestures(frame)
-            cv2.imshow("PC Control Feed", frame)
-
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-
-        self.camera.release()
-        cv2.destroyAllWindows()
-
-    def quit_app(self):
-        self.root.quit()
+from pc_control.app import bootstrap_default_files, create_application
 
 
-# Initialize the UI
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Enterprise PC Control Orchestrator")
+    parser.add_argument("--config", default=None, help="Path to JSON config file.")
+    parser.add_argument("--dry-run", action="store_true", help="Do not perform real mouse/keyboard actions.")
+    parser.add_argument("--duration", type=int, default=0, help="Optional auto-stop duration in seconds.")
+    return parser
+
+
+def main() -> int:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    bootstrap_default_files()
+    app = create_application(config_path=args.config, dry_run=args.dry_run)
+
+    stopping = False
+
+    def _handle_signal(signum, _frame):
+        nonlocal stopping
+        if stopping:
+            return
+        stopping = True
+        app.stop()
+
+    signal.signal(signal.SIGINT, _handle_signal)
+    signal.signal(signal.SIGTERM, _handle_signal)
+
+    app.start()
+
+    if args.duration > 0:
+        end = time.time() + args.duration
+        while time.time() < end and app.state.is_running:
+            time.sleep(0.2)
+        app.stop()
+        return 0
+
+    while app.state.is_running:
+        time.sleep(0.2)
+
+    return 0
+
+
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = PCControlApp(root)
-    root.mainloop()
+    sys.exit(main())
