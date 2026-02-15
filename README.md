@@ -383,19 +383,3 @@ Recommended first run:
 3. Click **Start App** and confirm authentication + camera startup in the console.
 4. When comfortable, uncheck safe mode for real control actions.
 
-
-Voice troubleshooting:
-
-- If voice thread fails with `Could not find PyAudio`, install dependencies:
-  - `pip install SpeechRecognition pyaudio`
-  - On Windows (if wheel build fails): `pip install pipwin && pipwin install pyaudio`
-- Use `python3 ui.py` and click **Check Voice Setup** to verify modules.
-
-New voice actions available in this release:
-
-- Volume: up/down/mute
-- Mouse clicks: left/right/double
-- Scrolling: normal and fast up/down
-- Cursor anchors: center, top-left, top-right, bottom-left, bottom-right
-- System: lock computer
-
