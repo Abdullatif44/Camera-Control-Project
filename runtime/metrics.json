@@ -1,0 +1,13 @@
+{
+  "timestamp": 1771164732.7752733,
+  "snapshot": {
+    "command_count": 43,
+    "blocked_command_count": 0,
+    "gesture_frames_processed": 42,
+    "auth_attempts": 0,
+    "auth_successes": 0,
+    "voice_commands_heard": 0,
+    "warnings": 0,
+    "errors": 0
+  }
+}

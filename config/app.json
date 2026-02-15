@@ -1,0 +1,61 @@
+{
+  "environment": "dev",
+  "camera": {
+    "device_index": 0,
+    "width": 1280,
+    "height": 720,
+    "target_fps": 30,
+    "mirrored": true
+  },
+  "gesture": {
+    "hand_max_num": 1,
+    "min_detection_confidence": 0.7,
+    "min_tracking_confidence": 0.5,
+    "click_distance_threshold": 0.045,
+    "right_click_distance_threshold": 0.05,
+    "double_click_cooldown_seconds": 0.8,
+    "drag_hold_threshold_seconds": 0.6,
+    "smoothing_alpha": 0.25,
+    "deadzone_px": 4
+  },
+  "voice": {
+    "enabled": true,
+    "phrase_time_limit_seconds": 4.0,
+    "ambient_noise_adjust_seconds": 1.0,
+    "language": "en-US",
+    "command_timeout_seconds": 5.0
+  },
+  "auth": {
+    "enabled": false,
+    "face_image_path": "user.png",
+    "acceptance_tolerance": 0.45,
+    "max_attempts": 2
+  },
+  "security": {
+    "fail_closed": true,
+    "redact_sensitive_logs": true,
+    "allowed_commands": [
+      "mouse.move",
+      "mouse.click.left",
+      "mouse.click.right",
+      "mouse.double_click",
+      "mouse.scroll.up",
+      "mouse.scroll.down",
+      "system.volume.up",
+      "system.volume.down",
+      "system.mute.toggle",
+      "system.lock"
+    ]
+  },
+  "metrics": {
+    "enabled": true,
+    "write_interval_seconds": 10.0,
+    "output_path": "runtime/metrics.json"
+  },
+  "logging": {
+    "level": "INFO",
+    "path": "runtime/pc_control.log",
+    "rotation_megabytes": 5,
+    "backup_count": 5
+  }
+}

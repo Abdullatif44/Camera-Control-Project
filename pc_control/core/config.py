@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, asdict
 from pathlib import Path
 from typing import Dict, List
 import json
@@ -121,20 +121,8 @@ class AppConfig:
         return AppConfig.from_dict(payload)
 
     def to_dict(self) -> Dict[str, object]:
-        return {
-            "environment": self.environment,
-            "camera": self.camera.__dict__,
-            "gesture": self.gesture.__dict__,
-            "voice": self.voice.__dict__,
-            "auth": self.auth.__dict__,
-            "security": {
-                "fail_closed": self.security.fail_closed,
-                "redact_sensitive_logs": self.security.redact_sensitive_logs,
-                "allowed_commands": self.security.allowed_commands,
-            },
-            "metrics": self.metrics.__dict__,
-            "logging": self.logging.__dict__,
-        }
+        return asdict(self)
+
 
 
 DEFAULT_CONFIG_PATHS = [

@@ -1,0 +1,90 @@
+2026-02-15 17:11:57 | INFO | pc_control.orchestrator | EventType.STARTUP | Application startup.
+2026-02-15 17:11:57 | INFO | pc_control.orchestrator | EventType.AUTH_SUCCESS | Auth disabled; bypassed.
+2026-02-15 17:12:02 | INFO | pc_control.orchestrator | EventType.HEARTBEAT | App heartbeat.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:04 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:05 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:06 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.HEARTBEAT | App heartbeat.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:07 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:08 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:09 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.GESTURE_FRAME | Processed gesture frame.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:10 | INFO | pc_control.orchestrator | EventType.COMMAND_EXECUTED | Command executed.
+2026-02-15 17:12:12 | INFO | pc_control.orchestrator | EventType.SHUTDOWN | Application shutdown.

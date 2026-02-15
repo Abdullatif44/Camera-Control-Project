@@ -141,46 +141,61 @@ class GestureInterpreter:
 
 
 class MediaPipeHandAdapter:
-    """Adapter around mediapipe output to HandLandmarks domain model."""
+    """Adapter using MediaPipe Tasks API (0.10+)"""
 
     def __init__(self, max_hands: int, min_detection: float, min_tracking: float) -> None:
         import mediapipe as mp
+        from mediapipe.tasks import python
+        from mediapipe.tasks.python import vision
 
         self.mp = mp
-        self.hands = mp.solutions.hands.Hands(
-            max_num_hands=max_hands,
-            min_detection_confidence=min_detection,
-            min_tracking_confidence=min_tracking,
+
+        base_options = python.BaseOptions(
+            model_asset_path="models/hand_landmarker.task"
         )
 
-    def parse(self, frame_bgr) -> List[HandLandmarks]:
+        options = vision.HandLandmarkerOptions(
+            base_options=base_options,
+            num_hands=max_hands
+        )
+
+        self.detector = vision.HandLandmarker.create_from_options(options)
+
+    def parse(self, frame_bgr):
         import cv2
 
         rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-        result = self.hands.process(rgb)
-        if not result.multi_hand_landmarks:
+
+        mp_image = self.mp.Image(
+            image_format=self.mp.ImageFormat.SRGB,
+            data=rgb
+        )
+
+        result = self.detector.detect(mp_image)
+
+        if not result.hand_landmarks:
             return []
 
-        parsed: List[HandLandmarks] = []
-        hand_enum = self.mp.solutions.hands.HandLandmark
-        for hand in result.multi_hand_landmarks:
-            lm = hand.landmark
+        parsed = []
+
+        for hand in result.hand_landmarks:
             parsed.append(
                 HandLandmarks(
-                    thumb_tip=self._to(lm[hand_enum.THUMB_TIP]),
-                    index_tip=self._to(lm[hand_enum.INDEX_FINGER_TIP]),
-                    index_pip=self._to(lm[hand_enum.INDEX_FINGER_PIP]),
-                    middle_tip=self._to(lm[hand_enum.MIDDLE_FINGER_TIP]),
-                    middle_pip=self._to(lm[hand_enum.MIDDLE_FINGER_PIP]),
-                    ring_tip=self._to(lm[hand_enum.RING_FINGER_TIP]),
-                    ring_pip=self._to(lm[hand_enum.RING_FINGER_PIP]),
-                    pinky_tip=self._to(lm[hand_enum.PINKY_TIP]),
-                    pinky_pip=self._to(lm[hand_enum.PINKY_PIP]),
-                    wrist=self._to(lm[hand_enum.WRIST]),
+                    thumb_tip=self._to(hand[4]),
+                    index_tip=self._to(hand[8]),
+                    index_pip=self._to(hand[6]),
+                    middle_tip=self._to(hand[12]),
+                    middle_pip=self._to(hand[10]),
+                    ring_tip=self._to(hand[16]),
+                    ring_pip=self._to(hand[14]),
+                    pinky_tip=self._to(hand[20]),
+                    pinky_pip=self._to(hand[18]),
+                    wrist=self._to(hand[0]),
                 )
             )
+
         return parsed
 
     @staticmethod
-    def _to(lm) -> Landmark:
+    def _to(lm):
         return Landmark(x=float(lm.x), y=float(lm.y), z=float(lm.z))
