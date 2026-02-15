@@ -61,6 +61,11 @@ class SecurityConfig:
             "system.volume.down",
             "system.mute.toggle",
             "system.lock",
+            "mouse.move.center",
+            "mouse.move.top_left",
+            "mouse.move.top_right",
+            "mouse.move.bottom_left",
+            "mouse.move.bottom_right",
         ]
     )
 

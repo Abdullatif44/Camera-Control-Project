@@ -78,6 +78,28 @@ class ExecutorTests(unittest.TestCase):
         self.executor.execute(Command(name="mouse.move", source="test", payload={"screen_x": 10, "screen_y": 20}))
         self.assertIn("move:10,20", self.api.actions)
 
+    def test_move_anchor_commands(self) -> None:
+        class FakePyAutoGUI:
+            @staticmethod
+            def size():
+                return (1000, 800)
+
+        original = __import__("sys").modules.get("pyautogui")
+        __import__("sys").modules["pyautogui"] = FakePyAutoGUI
+        try:
+            self.executor.execute(Command(name="mouse.move.center", source="test"))
+            self.executor.execute(Command(name="mouse.move.top_left", source="test"))
+            self.executor.execute(Command(name="mouse.move.bottom_right", source="test"))
+        finally:
+            if original is not None:
+                __import__("sys").modules["pyautogui"] = original
+            else:
+                del __import__("sys").modules["pyautogui"]
+
+        self.assertIn("move:500,400", self.api.actions)
+        self.assertIn("move:40,40", self.api.actions)
+        self.assertIn("move:960,760", self.api.actions)
+
     def test_clicks(self) -> None:
         self.executor.execute(Command(name="mouse.click.left", source="test"))
         self.executor.execute(Command(name="mouse.click.right", source="test"))

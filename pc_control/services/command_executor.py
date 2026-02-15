@@ -20,6 +20,26 @@ class CommandExecutor:
             self.api.move_to(x, y)
             return
 
+        if name == "mouse.move.center":
+            self._move_to_anchor("center")
+            return
+
+        if name == "mouse.move.top_left":
+            self._move_to_anchor("top_left")
+            return
+
+        if name == "mouse.move.top_right":
+            self._move_to_anchor("top_right")
+            return
+
+        if name == "mouse.move.bottom_left":
+            self._move_to_anchor("bottom_left")
+            return
+
+        if name == "mouse.move.bottom_right":
+            self._move_to_anchor("bottom_right")
+            return
+
         if name == "mouse.click.left":
             self.api.click_left()
             return
@@ -59,3 +79,19 @@ class CommandExecutor:
             return
 
         raise ValueError(f"Unsupported command: {name}")
+
+    def _move_to_anchor(self, anchor: str) -> None:
+        import pyautogui
+
+        width, height = pyautogui.size()
+        margin = 40
+
+        points = {
+            "center": (width // 2, height // 2),
+            "top_left": (margin, margin),
+            "top_right": (max(width - margin, 0), margin),
+            "bottom_left": (margin, max(height - margin, 0)),
+            "bottom_right": (max(width - margin, 0), max(height - margin, 0)),
+        }
+        x, y = points[anchor]
+        self.api.move_to(int(x), int(y))

@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
-from pc_control.core.config import AppConfig
+from pc_control.core.config import AppConfig, VoiceConfig
 from pc_control.core.models import Command
-from pc_control.integrations.voice_engine import VoiceCommandMapper, VoicePhrase
+from pc_control.integrations.voice_engine import SpeechRecognitionListener, VoiceCommandMapper, VoicePhrase
 from pc_control.services.event_bus import EventBus
 from pc_control.services.orchestrator import AppOrchestrator
 
@@ -38,30 +38,41 @@ class VoiceMapperTests(unittest.TestCase):
         assert command
         self.assertEqual(command.name, "mouse.click.left")
 
-    def test_maps_right_click(self) -> None:
-        command = self.mapper.to_command(VoicePhrase("right click"))
+    def test_maps_corner_move(self) -> None:
+        command = self.mapper.to_command(VoicePhrase("move top right now"))
         self.assertIsNotNone(command)
         assert command
-        self.assertEqual(command.name, "mouse.click.right")
+        self.assertEqual(command.name, "mouse.move.top_right")
 
-    def test_maps_double_click(self) -> None:
-        command = self.mapper.to_command(VoicePhrase("double click"))
+    def test_maps_fast_scroll(self) -> None:
+        command = self.mapper.to_command(VoicePhrase("scroll fast down"))
         self.assertIsNotNone(command)
         assert command
-        self.assertEqual(command.name, "mouse.double_click")
-
-    def test_maps_scroll(self) -> None:
-        up = self.mapper.to_command(VoicePhrase("scroll up quickly"))
-        down = self.mapper.to_command(VoicePhrase("scroll down now"))
-        self.assertIsNotNone(up)
-        self.assertIsNotNone(down)
-        assert up and down
-        self.assertEqual(up.name, "mouse.scroll.up")
-        self.assertEqual(down.name, "mouse.scroll.down")
+        self.assertEqual(command.name, "mouse.scroll.down")
+        self.assertEqual(command.payload["scroll_delta"], -240)
 
     def test_unknown_returns_none(self) -> None:
         command = self.mapper.to_command(VoicePhrase("open the pod bay doors"))
         self.assertIsNone(command)
+
+
+class VoiceListenerDependencyTests(unittest.TestCase):
+    def test_start_fails_when_pyaudio_missing(self) -> None:
+        listener = SpeechRecognitionListener(VoiceConfig())
+
+        def fake_import(name: str):
+            if name == "speech_recognition":
+                return object()
+            if name == "pyaudio":
+                raise ModuleNotFoundError("No module named pyaudio")
+            raise ModuleNotFoundError(name)
+
+        with patch("importlib.import_module", side_effect=fake_import):
+            started = listener.start()
+
+        self.assertFalse(started)
+        self.assertFalse(listener.available)
+        self.assertIn("pyaudio", listener.unavailable_reason.lower())
 
 
 class EventBusTests(unittest.TestCase):
