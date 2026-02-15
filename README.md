@@ -356,3 +356,46 @@ Tests avoid requiring those integrations by using pure logic and dry-run abstrac
 ## 15) Final statement
 
 This upgrade transforms the project from a demo into a maintainable foundation suitable for enterprise-style engineering workflows: modular code, isolated integration boundaries, policy-driven execution, and testable business logic.
+
+---
+
+
+## 16) Professional desktop window (easy mode)
+
+For non-technical users, launch the visual control center:
+
+```bash
+python3 ui.py
+```
+
+What you get in the window:
+
+- **Run settings panel**: choose config file, safe mode, and optional auto-stop duration.
+- **Start/Stop controls**: one-click lifecycle management for the app.
+- **Live console**: see startup/auth/runtime messages in real time.
+- **Quick start guide**: clear 5-step instructions for first-time users.
+- **Feature overview**: highlights gesture, voice, security, and metrics features.
+
+Recommended first run:
+
+1. Keep **Safe mode (dry run)** enabled.
+2. Use a small duration (for example 30 seconds).
+3. Click **Start App** and confirm authentication + camera startup in the console.
+4. When comfortable, uncheck safe mode for real control actions.
+
+
+Voice troubleshooting:
+
+- If voice thread fails with `Could not find PyAudio`, install dependencies:
+  - `pip install SpeechRecognition pyaudio`
+  - On Windows (if wheel build fails): `pip install pipwin && pipwin install pyaudio`
+- Use `python3 ui.py` and click **Check Voice Setup** to verify modules.
+
+New voice actions available in this release:
+
+- Volume: up/down/mute
+- Mouse clicks: left/right/double
+- Scrolling: normal and fast up/down
+- Cursor anchors: center, top-left, top-right, bottom-left, bottom-right
+- System: lock computer
+

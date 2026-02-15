@@ -73,7 +73,16 @@ class AppOrchestrator:
         )
 
         self.camera.start()
-        self.voice_listener.start()
+        voice_started = self.voice_listener.start()
+        if not voice_started:
+            self.events.publish(
+                DomainEvent(
+                    EventType.WARNING,
+                    "Voice listener unavailable.",
+                    context={"reason": self.voice_listener.unavailable_reason},
+                )
+            )
+            self.metrics.incr("warnings", 1)
 
         workers = [
             Thread(target=self._gesture_loop, daemon=True, name="gesture-loop"),
